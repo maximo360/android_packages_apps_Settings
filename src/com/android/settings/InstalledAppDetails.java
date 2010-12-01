@@ -281,7 +281,13 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
 
     private void initMoveButtonR() {
         String pkgName = mAppInfo.packageName;
-        boolean dataOnly = false;
+        String CurApkRootDir = mAppInfo.sourceDir.substring(1);
+        int idx = CurApkRootDir.indexOf('/');
+        String CurLoc = mAppInfo.sourceDir.substring(1, idx+1);
+        // TODO should get test strings from env and not hardcode them
+        boolean OnSDEXT = CurLoc.equals("sd-ext");
+        boolean OnINT = CurLoc.equals("data");
+        boolean OnEXT = CurLoc.equals("mnt");
         ApplicationInfo info1 = null;
         PackageInfo pkgInfo = null;
 
@@ -291,54 +297,16 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
                     PackageManager.GET_UNINSTALLED_PACKAGES);
         } catch (NameNotFoundException e) {
         }
-        dataOnly = (info1 == null) && (mAppInfo != null);
         boolean moveDisable = true;
-
-        if (dataOnly) {
-            mMoveAppButtonR.setText(R.string.move_app);
         //TODO disable this button if /sd-ext is not mounted
-        } else if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0 &&
-                   (mAppInfo.flags & ApplicationInfo.FLAG_SDEXT_STORAGE) == 0) {
-            mMoveAppButtonR.setText(R.string.move_app_to_sdext);
-            moveDisable = false;
-            MoveToSdExt = true;
-        } else if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0 ||
-                   (mAppInfo.flags & ApplicationInfo.FLAG_SDEXT_STORAGE) != 0) {
-            mMoveAppButtonR.setText(R.string.move_app_to_internal);
-            moveDisable = false;
-            MoveToInternal = true;
-        } else if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) == 0 ||
-                   (mAppInfo.flags & ApplicationInfo.FLAG_SDEXT_STORAGE) == 0) {
+        if (OnEXT || OnINT) {
             mMoveAppButtonR.setText(R.string.move_app_to_sdext);
             moveDisable = false;
             MoveToSdExt = true;
         } else {
-            mMoveAppButtonR.setText(R.string.move_app_to_sdcard);
-            if ((mAppInfo.flags & ApplicationInfo.FLAG_FORWARD_LOCK) == 0 &&
-                    (mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0 &&
-                    pkgInfo != null) {
-                if (pkgInfo.installLocation == PackageInfo.INSTALL_LOCATION_PREFER_EXTERNAL ||
-                        pkgInfo.installLocation == PackageInfo.INSTALL_LOCATION_PREFER_SDEXT ||
-                        pkgInfo.installLocation == PackageInfo.INSTALL_LOCATION_AUTO) {
-                    moveDisable = false;
-                } else if (pkgInfo.installLocation == PackageInfo.INSTALL_LOCATION_UNSPECIFIED) {
-                    IPackageManager ipm  = IPackageManager.Stub.asInterface(
-                            ServiceManager.getService("package"));
-                    int loc;
-                    try {
-                        loc = ipm.getInstallLocation();
-                    } catch (RemoteException e) {
-                        Log.e(TAG, "Is Pakage Manager running?");
-                        return;
-                    }
-                    if (loc == PackageHelper.APP_INSTALL_EXTERNAL) {
-                        // For apps with no preference and the default value set
-                        // to install on sdcard
-                        moveDisable = false;
-                        MoveToExternal = true;
-                    }
-                }
-            }
+            mMoveAppButtonR.setText(R.string.move_app_to_internal);
+            moveDisable = false;
+            MoveToInternal = true;
         }
         boolean allowMoveAllApps = android.provider.Settings.Secure.getInt(getContentResolver(),
                 android.provider.Settings.Secure.ALLOW_MOVE_ALL_APPS_EXTERNAL, 1) == 1;
@@ -827,18 +795,18 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
                 mPackageMoveObserver = new PackageMoveObserver();
             }
 
-            if (MoveToSdExt) {
-                int moveFlags = PackageManager.MOVE_SDEXT;
+            if (MoveToInternal) {
+                int moveFlags = (mAppInfo.flags & PackageManager.MOVE_INTERNAL);
+                mMoveInProgress = true;
+                refreshButtons();
+                mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
+            } else if (MoveToSdExt) {
+                int moveFlags = (mAppInfo.flags & PackageManager.MOVE_SDEXT);
                 mMoveInProgress = true;
                 refreshButtons();
                 mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
             } else if (MoveToExternal) {
-                int moveFlags = PackageManager.MOVE_EXTERNAL_MEDIA;
-                mMoveInProgress = true;
-                refreshButtons();
-                mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
-            } else if (MoveToInternal) {
-                int moveFlags = PackageManager.MOVE_INTERNAL;
+                int moveFlags = (mAppInfo.flags & PackageManager.MOVE_EXTERNAL_MEDIA);
                 mMoveInProgress = true;
                 refreshButtons();
                 mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
