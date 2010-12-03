@@ -75,9 +75,6 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
     private Button mUninstallButton;
     private boolean mMoveInProgress = false;
     private boolean mUpdatedSysApp = false;
-    private boolean MoveToExternal = false;
-    private boolean MoveToSdExt = false;
-    private boolean MoveToInternal = false;
     private Button mActivitiesButton;
     private boolean localLOGV = false;
     private TextView mAppVersion;
@@ -281,13 +278,6 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
 
     private void initMoveButtonR() {
         String pkgName = mAppInfo.packageName;
-        String CurApkRootDir = mAppInfo.sourceDir.substring(1);
-        int idx = CurApkRootDir.indexOf('/');
-        String CurLoc = mAppInfo.sourceDir.substring(1, idx+1);
-        // TODO should get test strings from env and not hardcode them
-        boolean OnSDEXT = CurLoc.equals("sd-ext");
-        boolean OnINT = CurLoc.equals("data");
-        boolean OnEXT = CurLoc.equals("mnt");
         ApplicationInfo info1 = null;
         PackageInfo pkgInfo = null;
 
@@ -299,14 +289,16 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
         }
         boolean moveDisable = true;
         //TODO disable this button if /sd-ext is not mounted
-        if (OnEXT || OnINT) {
+        if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) == 0 &&
+            (mAppInfo.flags & ApplicationInfo.FLAG_SDEXT_STORAGE) == 0) {
             mMoveAppButtonR.setText(R.string.move_app_to_sdext);
             moveDisable = false;
-            MoveToSdExt = true;
+        } else if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0) {
+            mMoveAppButtonR.setText(R.string.move_app_to_sdext);
+            moveDisable = false;
         } else {
             mMoveAppButtonR.setText(R.string.move_app_to_internal);
             moveDisable = false;
-            MoveToInternal = true;
         }
         boolean allowMoveAllApps = android.provider.Settings.Secure.getInt(getContentResolver(),
                 android.provider.Settings.Secure.ALLOW_MOVE_ALL_APPS_EXTERNAL, 1) == 1;
@@ -795,17 +787,19 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
                 mPackageMoveObserver = new PackageMoveObserver();
             }
 
-            if (MoveToSdExt) {
+            if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0 ||
+                (mAppInfo.flags & ApplicationInfo.FLAG_SDEXT_STORAGE) == 0) {
                 int moveFlags = (mAppInfo.flags & PackageManager.MOVE_SDEXT);
                 mMoveInProgress = true;
                 refreshButtons();
                 mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
-            } else if (MoveToExternal) {
-                int moveFlags = (mAppInfo.flags & PackageManager.MOVE_EXTERNAL_MEDIA);
+            } else if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0 &&
+                       (mAppInfo.flags & ApplicationInfo.FLAG_SDEXT_STORAGE) != 0) {
+                int moveFlags = (mAppInfo.flags & PackageManager.MOVE_INTERNAL);
                 mMoveInProgress = true;
                 refreshButtons();
                 mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
-            } else if (MoveToInternal) {
+            } else {
                 int moveFlags = (mAppInfo.flags & PackageManager.MOVE_INTERNAL);
                 mMoveInProgress = true;
                 refreshButtons();
