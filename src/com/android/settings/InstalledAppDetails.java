@@ -280,6 +280,11 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
         String pkgName = mAppInfo.packageName;
         ApplicationInfo info1 = null;
         PackageInfo pkgInfo = null;
+        // hacky workaround for when app is on sd-ext via script based a2sdext
+        String CurApkRootDir = mAppInfo.sourceDir.substring(1);
+        int idx = CurApkRootDir.indexOf('/');
+        String CurLoc = mAppInfo.sourceDir.substring(1, idx+1);
+        boolean OnSDEXT = CurLoc.equals("sd-ext");
 
         try {
             info1 = mPm.getApplicationInfo(pkgName, 0);
@@ -290,10 +295,12 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
         boolean moveDisable = true;
         //TODO disable this button if /sd-ext is not mounted
         if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) == 0 &&
-            (mAppInfo.flags & ApplicationInfo.FLAG_SDEXT_STORAGE) == 0) {
+            (mAppInfo.flags & ApplicationInfo.FLAG_SDEXT_STORAGE) == 0 &&
+            (!OnSDEXT)) {
             mMoveAppButtonR.setText(R.string.move_app_to_sdext);
             moveDisable = false;
-        } else if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0) {
+        } else if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0 &&
+                   (!OnSDEXT)) {
             mMoveAppButtonR.setText(R.string.move_app_to_sdext);
             moveDisable = false;
         } else {
