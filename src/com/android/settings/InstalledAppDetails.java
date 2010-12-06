@@ -293,7 +293,6 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
         } catch (NameNotFoundException e) {
         }
         boolean moveDisable = true;
-        //TODO disable this button if /sd-ext is not mounted
         if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) == 0 &&
             (mAppInfo.flags & ApplicationInfo.FLAG_SDEXT_STORAGE) == 0 &&
             (!OnSDEXT)) {
@@ -310,6 +309,8 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
         boolean allowMoveAllApps = android.provider.Settings.Secure.getInt(getContentResolver(),
                 android.provider.Settings.Secure.ALLOW_MOVE_ALL_APPS_EXTERNAL, 1) == 1;
         if (!allowMoveAllApps && moveDisable) {
+            mMoveAppButtonR.setEnabled(false);
+        } else if (!android.os.SystemProperties.getBoolean("cm.a2sd.active", false)) {
             mMoveAppButtonR.setEnabled(false);
         } else {
             mMoveAppButtonR.setOnClickListener(this);
@@ -788,7 +789,6 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
             mMoveInProgress = true;
             refreshButtons();
             mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
-        //TODO disable this button if /sd-ext is not mounted
         } else if (v == mMoveAppButtonR) {
             if (mPackageMoveObserver == null) {
                 mPackageMoveObserver = new PackageMoveObserver();
