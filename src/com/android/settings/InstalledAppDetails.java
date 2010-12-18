@@ -273,7 +273,10 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
         }
         boolean allowMoveAllApps = android.provider.Settings.Secure.getInt(getContentResolver(),
                 android.provider.Settings.Secure.ALLOW_MOVE_ALL_APPS_EXTERNAL, 1) == 1;
-        if (!allowMoveAllApps && moveDisable) {
+        if ((mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0){
+            // Disable button for system applications.
+            mMoveAppButtonL.setEnabled(false);
+        } else if (!allowMoveAllApps && moveDisable) {
             mMoveAppButtonL.setEnabled(false);
         } else {
             mMoveAppButtonL.setOnClickListener(this);
@@ -316,7 +319,10 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
         }
         boolean allowMoveAllApps = android.provider.Settings.Secure.getInt(getContentResolver(),
                 android.provider.Settings.Secure.ALLOW_MOVE_ALL_APPS_EXTERNAL, 1) == 1;
-        if (!allowMoveAllApps && moveDisable) {
+        if ((mAppInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0){
+            // Disable button for system applications.
+            mMoveAppButtonR.setEnabled(false);
+        } else if (!allowMoveAllApps && moveDisable) {
             mMoveAppButtonR.setEnabled(false);
         } else if (!android.os.SystemProperties.getBoolean("cm.a2sd.active", false)) {
             mMoveAppButtonR.setEnabled(false);
