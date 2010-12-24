@@ -805,12 +805,8 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
                 mMoveInProgress = true;
                 refreshButtons();
                 mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
-            } else if (MoveToInternal) {
-                int moveFlags = (mAppInfo.flags & PackageManager.MOVE_INTERNAL);
-                mMoveInProgress = true;
-                refreshButtons();
-                mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
-            } else {
+            }
+            if (MoveToInternal) {
                 int moveFlags = (mAppInfo.flags & PackageManager.MOVE_INTERNAL);
                 mMoveInProgress = true;
                 refreshButtons();
