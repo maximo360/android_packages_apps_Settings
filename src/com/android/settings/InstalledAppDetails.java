@@ -1,5 +1,3 @@
-
-
 /**
  * Copyright (C) 2007 The Android Open Source Project
  *
@@ -123,10 +121,8 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
     private static final int DLG_FORCE_STOP = DLG_BASE + 5;
     private static final int DLG_MOVE_FAILED = DLG_BASE + 6;
 
-    // to make move instruction easier ( cuurently only used in initMoveButtonR )
-    private boolean MoveToExternal = false;
+    // to make move instruction easier
     private boolean MoveToSdExt = false;
-    private boolean MoveToInternal = false;
     
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -295,19 +291,15 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
         } catch (NameNotFoundException e) {
         }
         boolean moveDisable = true;
-        if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) == 0 &&
+        if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0 ||
             (mAppInfo.flags & ApplicationInfo.FLAG_SDEXT_STORAGE) == 0) {
-            mMoveAppButtonR.setText(R.string.move_app_to_sdext);
-            moveDisable = false;
-            MoveToSdExt = true;
-        } else if ((mAppInfo.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0) {
             mMoveAppButtonR.setText(R.string.move_app_to_sdext);
             moveDisable = false;
             MoveToSdExt = true;
         } else {
             mMoveAppButtonR.setText(R.string.move_app_to_internal);
             moveDisable = false;
-            MoveToInternal = true;
+            MoveToSdExt = false;
         }
         boolean allowMoveAllApps = android.provider.Settings.Secure.getInt(getContentResolver(),
                 android.provider.Settings.Secure.ALLOW_MOVE_ALL_APPS_EXTERNAL, 1) == 1;
@@ -801,13 +793,12 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
             }
 
             if (MoveToSdExt) {
-                int moveFlags = (mAppInfo.flags & PackageManager.MOVE_SDEXT);
+                int moveFlags = PackageManager.MOVE_SDEXT;
                 mMoveInProgress = true;
                 refreshButtons();
                 mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
-            }
-            if (MoveToInternal) {
-                int moveFlags = (mAppInfo.flags & PackageManager.MOVE_INTERNAL);
+            } else {
+                int moveFlags = PackageManager.MOVE_INTERNAL;
                 mMoveInProgress = true;
                 refreshButtons();
                 mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
