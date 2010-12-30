@@ -792,16 +792,12 @@ public class InstalledAppDetails extends Activity implements View.OnClickListene
                 mPackageMoveObserver = new PackageMoveObserver();
             }
 
+            mMoveInProgress = true;
+            refreshButtons();
             if (MoveToSdExt) {
-                int moveFlags = PackageManager.MOVE_SDEXT;
-                mMoveInProgress = true;
-                refreshButtons();
-                mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
+                mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, PackageManager.MOVE_SDEXT);
             } else {
-                int moveFlags = PackageManager.MOVE_INTERNAL;
-                mMoveInProgress = true;
-                refreshButtons();
-                mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, moveFlags);
+                mPm.movePackage(mAppInfo.packageName, mPackageMoveObserver, PackageManager.MOVE_INTERNAL);
             }
         }
     }
