@@ -1050,9 +1050,15 @@
     <string name="battery_history_awake_label" msgid="8449792868990080882">"In esecuzione"</string>
     <string name="battery_history_screen_on_label" msgid="1848936521786339362">"Schermo acceso"</string>
     <string name="battery_history_phone_on_label" msgid="700191958853142297">"Cellulare acceso"</string>
+    <string name="battery_history_wifi_on_label">Wifi acceso</string>
+    <string name="battery_history_wifi_running_label">Wifi in esecuzione</string>
+    <string name="battery_history_bluetooth_on_label">Bluetooth acceso</string>
     <string name="battery_history_awake" msgid="4350886665719031057">"Tempo trascorso senza sospensione:"</string>
     <string name="battery_history_screen_on" msgid="1377240025275657277">"Tempo trascorso con schermo acceso:"</string>
     <string name="battery_history_phone_on" msgid="4891504401623839532">"Tempo trascorso con cellulare acceso:"</string>
+    <string name="battery_history_wifi_on">Tempo trascorso con Wifi acceso:</string>
+    <string name="battery_history_wifi_running">Tempo trascorso con Wifi in esecuzione:</string>
+    <string name="battery_history_bluetooth_on">Tempo trascorso con Bluetooth acceso:</string>
     <string name="battery_history_screen_on_battery" msgid="536058210445081888">"A batteria:"</string>
     <string name="battery_history_screen_on_plugged" msgid="5019127390021871260">"Collegato:"</string>
     <string name="usage_stats_label" msgid="5890846333487083609">"Statistiche di utilizzo"</string>
@@ -1262,8 +1268,10 @@
     <string name="vpn_openvpn_set_remote_addr">indirizzo IP remoto</string>
     <string name="vpn_openvpn_set_cipher">Algoritmo di cifratura</string>
     <string name="vpn_openvpn_set_cipher_message">Lascia vuoto per usare cifratura di default</string>
+    <string name="vpn_openvpn_set_cipher_default">default</string>
     <string name="vpn_openvpn_set_keysize">Dimensione chiave di cifratura</string>
     <string name="vpn_openvpn_set_keysize_message">Lascia vuoto per usare valori di cifratura di default</string>
+    <string name="vpn_openvpn_set_keysize_default">default</string>
     <string name="vpn_openvpn_set_extra">Argomenti extra</string>
     <string name="vpn_openvpn_set_extra_message">Inserisci argomenti da linea di comando extra</string>
     <string name="vpn_ipsec_presharedkey_title" msgid="2184060087690539175">"Imposta chiave pre-condivisa IPSec"</string>
@@ -1348,6 +1356,8 @@
     <string name="profile_settings">Impostazioni profili</string>
     <!-- Name of the profile, setting caption -->
     <string name="profile_name">Nome profilo</string>
+    <!-- Default name of a new profile: "<new profile>" -->
+    <string name="new_profile_name">&lt;nuovo profilo&gt;</string>
     <!-- Profile summary - hint that touching configures profile -->
     <string name="profile_summary">Tocca per configurare il profilo</string>
     <!-- Title for application group setting screen -->
@@ -1378,6 +1388,8 @@
     <string name="menu_new_profile_summary">Aggiungi e configura un nuovo profilo</string>
     <!-- Delete an item context menu item -->
     <string name="profile_menu_delete">Elimina</string>
+    <!-- Message when trying to delete the active profile -->
+    <string name="profile_cannot_delete">Non puoi eliminare il profilo in uso.</string>
     <!-- Menu item for adding a new app group -->
     <string name="profile_new_appgroup">Nuovo gruppo applicazioni</string>
     <!-- Menu item for deleting an app group -->
