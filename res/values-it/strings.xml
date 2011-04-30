@@ -459,6 +459,7 @@
     <string name="wimax_menu_advanced">Avanzate</string>
     <!-- Header for the list of wimax networks-->
     <string name="wimax_networks">Reti WiMAX</string>
+    <string name="scan_for_wimax">Cerca reti WiMAX</string>
     <!-- Action message to scan for wimax network -->
     <string name="wimax_scan_networks">Scansione reti WiMAX</string>
     <!-- Error message when Wimax can't scan for networks -->
@@ -667,6 +668,7 @@
     <string name="status_up_time" msgid="7294859476816760399">"Tempo di attività"</string>
     <string name="status_awake_time" msgid="2393949909051183652">"Tempo di attività"</string>
     <string name="internal_memory" msgid="9129595691484260784">"Archivio interno"</string>
+    <string name="additional_memory">Archivio aggiuntivo</string>
     <string name="sd_memory" product="nosdcard" msgid="2510246194083052841">"Archivio USB"</string>
     <string name="sd_memory" product="default" msgid="151871913888051515">"Scheda SD"</string>
     <string name="memory_available" msgid="418542433817289474">"Spazio disponibile"</string>
