@@ -29,12 +29,10 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
-
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
 import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.wifi.WifiEnabler;
-import com.android.settings.wimax.WimaxEnabler;
 import com.android.settings.nfc.NfcEnabler;
 
 public class WirelessSettings extends PreferenceActivity {
@@ -42,13 +40,12 @@ public class WirelessSettings extends PreferenceActivity {
     private static final String KEY_TOGGLE_AIRPLANE = "toggle_airplane";
     private static final String KEY_TOGGLE_BLUETOOTH = "toggle_bluetooth";
     private static final String KEY_TOGGLE_WIFI = "toggle_wifi";
-    private static final String KEY_TOGGLE_WIMAX = "toggle_wimax";
     private static final String KEY_TOGGLE_NFC = "toggle_nfc";
     private static final String KEY_WIFI_SETTINGS = "wifi_settings";
+    private static final String KEY_WIMAX_SETTINGS = "wimax_settings";
     private static final String KEY_BT_SETTINGS = "bt_settings";
     private static final String KEY_VPN_SETTINGS = "vpn_settings";
     private static final String KEY_TETHER_SETTINGS = "tether_settings";
-    private static final String KEY_WIMAX_SETTINGS = "wimax_settings";
 
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
@@ -58,7 +55,6 @@ public class WirelessSettings extends PreferenceActivity {
     private WifiEnabler mWifiEnabler;
     private NfcEnabler mNfcEnabler;
     private BluetoothEnabler mBtEnabler;
-    private WimaxEnabler mWimaxEnabler;
 
     /**
      * Invoked on each preference click in this hierarchy, overrides
@@ -97,7 +93,6 @@ public class WirelessSettings extends PreferenceActivity {
 
         CheckBoxPreference airplane = (CheckBoxPreference) findPreference(KEY_TOGGLE_AIRPLANE);
         CheckBoxPreference wifi = (CheckBoxPreference) findPreference(KEY_TOGGLE_WIFI);
-        CheckBoxPreference wimax = (CheckBoxPreference) findPreference(KEY_TOGGLE_WIMAX);
         CheckBoxPreference bt = (CheckBoxPreference) findPreference(KEY_TOGGLE_BLUETOOTH);
         CheckBoxPreference nfc = (CheckBoxPreference) findPreference(KEY_TOGGLE_NFC);
 
@@ -105,11 +100,26 @@ public class WirelessSettings extends PreferenceActivity {
         mAirplaneModePreference = (CheckBoxPreference) findPreference(KEY_TOGGLE_AIRPLANE);
         mWifiEnabler = new WifiEnabler(this, wifi);
         mBtEnabler = new BluetoothEnabler(this, bt);
-        mWimaxEnabler = new WimaxEnabler(this, getSystemService(Context.WIMAX_SERVICE), wimax);
         mNfcEnabler = new NfcEnabler(this, nfc);
 
         String toggleable = Settings.System.getString(getContentResolver(),
                 Settings.System.AIRPLANE_MODE_TOGGLEABLE_RADIOS);
+
+        //enable/disable wimax depending on the value in config.xml
+        boolean isWimaxEnabled = this.getResources().getBoolean(
+                com.android.internal.R.bool.config_wimaxEnabled);
+        if (!isWimaxEnabled) {
+            PreferenceScreen root = getPreferenceScreen();
+            Preference ps = (Preference) findPreference(KEY_WIMAX_SETTINGS);
+            if (ps != null)
+                root.removePreference(ps);
+        } else {
+            if (toggleable == null || !toggleable.contains(Settings.System.RADIO_WIMAX )
+                    && isWimaxEnabled) {
+                Preference ps = (Preference) findPreference(KEY_WIMAX_SETTINGS);
+                ps.setDependency(KEY_TOGGLE_AIRPLANE);
+            }
+        }
 
         // Manually set dependencies for Wifi when not toggleable.
         if (toggleable == null || !toggleable.contains(Settings.System.RADIO_WIFI)) {
@@ -124,12 +134,6 @@ public class WirelessSettings extends PreferenceActivity {
             findPreference(KEY_BT_SETTINGS).setDependency(KEY_TOGGLE_AIRPLANE);
         }
 
-        // Manually set dependencies for WiMAX when not toggleable.
-        if (toggleable == null || !toggleable.contains(Settings.System.RADIO_WIMAX)) {
-            wimax.setDependency(KEY_TOGGLE_AIRPLANE);
-            findPreference(KEY_WIMAX_SETTINGS).setDependency(KEY_TOGGLE_AIRPLANE);
-        }
-
         // Remove Bluetooth Settings if Bluetooth service is not available.
         if (ServiceManager.getService(BluetoothAdapter.BLUETOOTH_SERVICE) == null) {
             getPreferenceScreen().removePreference(bt);
@@ -138,12 +142,6 @@ public class WirelessSettings extends PreferenceActivity {
         // Remove NFC if its not available
         if (NfcAdapter.getDefaultAdapter(this) == null) {
             getPreferenceScreen().removePreference(nfc);
-        }
-
-        // Remove WiMAX if its not available
-        if (getSystemService(Context.WIMAX_SERVICE) == null) {
-            getPreferenceScreen().removePreference(wimax);
-            getPreferenceScreen().removePreference(findPreference(KEY_WIMAX_SETTINGS));
         }
 
         // Disable Tethering if it's not allowed
@@ -177,7 +175,6 @@ public class WirelessSettings extends PreferenceActivity {
         mAirplaneModeEnabler.resume();
         mWifiEnabler.resume();
         mBtEnabler.resume();
-        mWimaxEnabler.resume();
         mNfcEnabler.resume();
     }
 
@@ -188,7 +185,6 @@ public class WirelessSettings extends PreferenceActivity {
         mAirplaneModeEnabler.pause();
         mWifiEnabler.pause();
         mBtEnabler.pause();
-        mWimaxEnabler.pause();
         mNfcEnabler.pause();
     }
 

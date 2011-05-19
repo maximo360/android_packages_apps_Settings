@@ -417,48 +417,6 @@
     <string name="wifi_tether_configure_ap_text" msgid="3474995108398156258">"Налашт. точку дост. Wi-Fi"</string>
     <string name="wifi_tether_configure_subtext" msgid="1927454307836232128">"<xliff:g id="NETWORK_SSID">%1$s</xliff:g> <xliff:g id="NETWORK_SECURITY">%2$s</xliff:g> портат. точка дост. Wi-Fi"</string>
     <string name="wifi_tether_configure_ssid_default" msgid="8467525402622138547">"AndroidHotspot"</string>
-    <string name="wimax_quick_toggle_title">WiMAX</string>
-    <string name="wimax_quick_toggle_summary">Увімкнути WiMAX</string>
-    <string name="wimax_starting">Увімкнення\u2026</string>
-    <string name="wimax_stopping">Вимкнення\u2026</string>
-    <string name="wimax_error">Помилка</string>
-    <string name="error_wimax_starting">Не вдається запустити WiMAX</string>
-    <string name="error_wimax_stopping">Не вдається зупинити WiMAX</string>
-    <string name="wimax_settings_title">Налаштування WiMAX</string>
-    <string name="wimax_settings_summary">Управління WiMAX</string>
-    <string name="wimax_settings_category">Налаштування WiMAX</string>
-    <string name="wimax">WiMAX</string>
-    <string name="scan_wimax">Пошук</string>
-    <string name="wimax_menu_advanced">Розширені налаштування</string>
-    <string name="wimax_networks">Мережі WiMAX</string>
-    <string name="wimax_scan_networks">Пошук мереж WiMAX</string>
-    <string name="error_wimax_scanning">Не вдається виконати пошук мереж</string>
-    <string name="wimax_auto_connect">Автоматичне підключення</string>
-    <string name="wimax_auto_connect_summary">Автоматичне підключення до мережі, яка востаннє використовувалася, якщо вона доступна</string>
-    <string name="wimax_context_menu_connect">Підключення до мережі</string>
-    <string name="wimax_context_menu_disconnect">Відключення від мережі</string>
-    <string name="error_wimax_connecting">Не вдається підключитися до мережі</string>
-    <string name="wimax_signal_3">Відмінний</string>
-    <string name="wimax_signal_2">Добрий</string>
-    <string name="wimax_signal_1">Достатній</string>
-    <string name="wimax_signal_0">Слабкий</string>
-    <string name="wimax_advanced_titlebar">Розширені налаштування</string>
-    <string name="wimax_advanced_mac_address_title">MAC-адреса</string>
-    <string name="wimax_advanced_hw_version_title">Версія обладнання</string>
-    <string name="wimax_advanced_sw_version_title">Версія прошивки</string>
-    <string name="wimax_advanced_signal_strength_rssi_title">Рівень сигналу (RSSI)</string>
-    <string name="wimax_advanced_signal_strength_simple_title">Рівень сигналу (простий)</string>
-    <string name="wimax_ip_settings_titlebar">Налаштування IP</string>
-    <string name="wimax_ip_address">IP-адреса</string>
-    <string name="wimax_gateway">Шлюз</string>
-    <string name="wimax_status_scanning">Пошук\u2026</string>
-    <string name="wimax_status_connecting">Підключення\u2026</string>
-    <string name="wimax_status_connecting_to">Підключення до <xliff:g id="network_name">%1$s</xliff:g>\u2026</string>
-    <string name="wimax_status_connected">Підключено</string>
-    <string name="wimax_status_connected_to">Підключено до <xliff:g id="network_name">%1$s</xliff:g></string>
-    <string name="wimax_status_disconnecting">Відключення\u2026</string>
-    <string name="wimax_status_disconnecting_from">Відключення від <xliff:g id="network_name">%1$s</xliff:g>\u2026</string>
-    <string name="wimax_status_disconnected">Відключено</string>
     <string name="sound_settings_title" msgid="8735891486683305886">"Звук"</string>
     <string name="profile_settings_title">Профілі</string>
     <string name="display_settings_title">"Відображення</string>
@@ -647,6 +605,7 @@
     <string name="apn_auth_type_chap" msgid="3369626283789068360">"CHAP"</string>
     <string name="apn_auth_type_pap_chap" msgid="9102343063036134541">"PAP або CHAP"</string>
     <string name="apn_type" msgid="469613123902220544">"Тип APN"</string>
+    <string name="apn_protocol" msgid="3272222921649348640">"Протокол APN"</string>
     <string name="menu_delete" msgid="6981294422841124659">"Видалити APN"</string>
     <string name="menu_new" msgid="3014205883303921729">"Нова APN"</string>
     <string name="menu_save" msgid="8109345640668285399">"Зберег."</string>
@@ -1232,7 +1191,7 @@
     <string name="credentials_disabled" msgid="7453188089059045380">"Сховище облікових даних вимкнено."</string>
     <string name="encrypted_fs_category" msgid="1841367653663913956">"Система шифрування файлів"</string>
     <string name="encrypted_fs_enable" msgid="3884033081603327729">"Шифрувати особисті дані користувача"</string>
-    <string name="encrypted_fs_enable_summary" msgid="5635188119509076089">"Увімкнути пам\'ять системи шифрування файлів для особистих даних користувача в цьому пристрої"</string>
+    <string name="encrypted_fs_enable_summary" msgid="5635188119509076089">"Увімкнути пам’ять системи шифрування файлів для особистих даних користувача в цьому пристрої"</string>
     <string name="encrypted_fs_enable_dialog" msgid="919487211207214266">"Щоб увімкнути системи шифрування файлів, потрібно стерти дані пристрою."</string>
     <string name="encrypted_fs_disable_dialog" msgid="6960413613985682501">"Щоб вимкнути системи шифрування файлів, потрібно стерти дані пристрою."</string>
     <string name="encrypted_fs_enable_button" msgid="8453841319751433751">"Увімкнути"</string>
@@ -1374,4 +1333,7 @@
     <string name="ok">OK</string>
     <string name="widget_count">(%d віджетів)</string>
     <string name="cm_settings_title">CyanogenMod</string>
+    <string name="wimax_settings" msgid="1574837328738396794">"Налаштування 4G"</string>
+    <string name="wimax_settings_summary" msgid="3207355006084135453">"Налаштувати 4G мережу та модем і керувати ними"</string>
+    <string name="status_wimax_mac_address" msgid="8390791848661413416">"4G MAC-адреса"</string>
 </resources>

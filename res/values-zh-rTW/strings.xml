@@ -956,6 +956,7 @@
     <!-- Default access point SSID used for tethering -->
     <string name="wifi_tether_configure_ssid_default" msgid="8467525402622138547">"Android 無線基地台"</string>
 
+
     <!-- Do not translate. Used for diagnostic screens, precise translation is not necessary
          Wi-Fi Testing on the diagnostic screen-->
     <!-- skipping untranslatable /resources:0/string:name=testing_wifi_info -->
@@ -1038,99 +1039,6 @@
     <!-- Do not translate. Used for diagnostic screens, precise translation is not necessary
          Label on Wi-Fi Configuration screen-->
     <!-- skipping untranslatable /resources:0/string:name=config_list_label -->
-
-    <!-- Wimax settings -->
-    <!-- Used in the 1st-level settings screen to turn on Wimax -->
-    <string name="wimax_quick_toggle_title">WiMAX</string>
-    <!-- Used in the 1st-level settings screen as the turn-on summary -->
-    <string name="wimax_quick_toggle_summary">開啟 WiMAX</string>
-    <!--Wireless controls setting screen, Wimax check box summary text when turning Wimax on -->
-    <string name="wimax_starting">開啟中…</string>
-    <!--Wireless controls setting screen, Wimax check box summary text when turning Wimax off -->
-    <string name="wimax_stopping">關閉中…</string>
-    <!-- Generic error message -->
-    <string name="wimax_error">錯誤</string>
-    <!-- Error message when Wimax can't start -->
-    <string name="error_wimax_starting">無法啟動 WiMAX</string>
-    <!-- Error message when Wimax can't stop -->
-    <string name="error_wimax_stopping">無法停用 WiMAX</string>
-
-    <!-- Used in the 1st-level settings screen to go to the 2nd-level settings screen -->
-    <string name="wimax_settings_title">WiMAX 設定</string>
-    <!--Wireless controls setting screen, Wimax settings summary text -->
-    <string name="wimax_settings_summary">管理 wimax</string>
-
-    <!-- Title of the Wimax settings screen -->
-    <string name="wimax_settings_category">WiMAX 設定</string>
-    <!-- Used in the 2nd-level settings screen to turn on Wimax -->
-    <string name="wimax">WiMAX</string>
-    <!--Wimax settings screen menu option -->
-    <string name="scan_wimax">掃描</string>
-    <!--Wimax settings screen menu option -->
-    <string name="wimax_menu_advanced">進階</string>
-    <!-- Header for the list of wimax networks-->
-    <string name="wimax_networks">WiMAX 網路</string>
-    <string name="scan_for_wimax">掃描 WiMAX</string>
-    <!-- Action message to scan for wimax network -->
-    <string name="wimax_scan_networks">掃描 WiMAX 網路</string>
-    <!-- Error message when Wimax can't scan for networks -->
-    <string name="error_wimax_scanning">無法掃描網路</string>
-
-    <!-- Checkbox title for option to auto connect to last connected wimax network -->
-    <string name="wimax_auto_connect">自動連線</string>
-    <!-- Checkbox summary for option to auto connect to last connected wimax network -->
-    <string name="wimax_auto_connect_summary">在可供使用的情況下，自動連接至上次連接過的網路</string>
-    <!--Wimax settings screen, network context menu item -->
-    <string name="wimax_context_menu_connect">連線至網路</string>
-    <!--Wimax settings screen, network context menu item -->
-    <string name="wimax_context_menu_disconnect">中斷網路連線</string>
-    <!-- Error message when Wimax can't connect -->
-    <string name="error_wimax_connecting">無法連線至網路</string>
-
-    <!-- Verbose wimax signal strength.  This is the best out of 4 levels. -->
-    <string name="wimax_signal_3">優</string>
-    <!-- Verbose wimax signal strength.  This is the 2nd best out of 4 levels. -->
-    <string name="wimax_signal_2">良</string>
-    <!-- Verbose wimax signal strength.  This is the 3rd best out of 4 levels. -->
-    <string name="wimax_signal_1">可</string>
-    <!-- Verbose wimax signal strength.  This is the worst out of 4 levels. -->
-    <string name="wimax_signal_0">差</string>
-
-    <!-- Wimax settings screen, advanced, settings section.  This is a header shown above advanced wimax settings. -->
-    <string name="wimax_advanced_titlebar">進階</string>
-    <!-- Wimax settings screen, advanced, title of the item to show the Wimax device's MAC address. -->
-    <string name="wimax_advanced_mac_address_title">MAC 位址</string>
-    <!-- Wimax settings screen, advanced, title of the item to show the Wimax device's Hardware Version. -->
-    <string name="wimax_advanced_hw_version_title">硬體版本</string>
-    <!-- Wimax settings screen, advanced, title of the item to show the Wimax device's Firmware Version. -->
-    <string name="wimax_advanced_sw_version_title">韌體版本</string>
-    <!-- Wimax settings screen, advanced, title of the item to show the Wimax connection's rssi. -->
-    <string name="wimax_advanced_signal_strength_rssi_title">訊號強度（RSSI）</string>
-    <!-- Wimax settings screen, advanced, title of the item to show the Wimax connection's simple signal strength. -->
-    <string name="wimax_advanced_signal_strength_simple_title">訊號強度（簡單）</string>
-    <!-- Title of the screen to adjust IP settings -->
-    <string name="wimax_ip_settings_titlebar">IP 設定</string>
-    <!-- Label for the IP address -->
-    <string name="wimax_ip_address">IP 位址</string>
-    <!-- Label for the gateway of the network -->
-    <string name="wimax_gateway">閘道</string>
-
-    <!-- Status message of Wimax when it is scanning -->
-    <string name="wimax_status_scanning">掃描中…</string>
-    <!-- Status message of Wimax when it is connecting (but the network is not known right now) -->
-    <string name="wimax_status_connecting">連線中…</string>
-    <!-- Status message of wimax when it is connecting to a particular network -->
-    <string name="wimax_status_connecting_to">正在連線到 <xliff:g id="network_name">%1$s</xliff:g>…</string>
-    <!--Wimax settings screen, summary text for network when connected -->
-    <string name="wimax_status_connected">已連線</string>
-    <!-- Status message of wimax when it is connected to a network -->
-    <string name="wimax_status_connected_to">已連線到 <xliff:g id="network_name">%1$s</xliff:g></string>
-    <!-- Status message of wimax when it is disconnecting (but the network is not known right now) -->
-    <string name="wimax_status_disconnecting">正在中斷連線…</string>
-    <!-- Status message of wimax when it is disconnecting from a network -->
-    <string name="wimax_status_disconnecting_from">正在從 <xliff:g id="network_name">%1$s</xliff:g> 中斷連線…</string>
-    <!-- Status message of wimax when it is disconnected -->
-    <string name="wimax_status_disconnected">已中斷連線</string>
 
     <!-- Sound and alerts settings -->
     <!-- Main Settings screen setting option name to go into the sound settings screen -->
@@ -1290,7 +1198,7 @@
     <!-- Sound & display settings screen, setting option summary to change brightness -->
     <string name="brightness_summary" msgid="838917350127550703">"調整螢幕亮度"</string>
     <!-- Sound & display settings screen, setting option name to change screen timeout -->
-    <string name="screen_timeout" msgid="4882669461447531301">"螢幕逾時"</string>
+    <string name="screen_timeout" msgid="4882669461447531301">"螢幕自動關閉"</string>
     <!-- Sound & display settings screen, setting option summary to change screen timeout -->
     <string name="screen_timeout_summary" msgid="2905757633140605334">"調整螢幕自動關閉前的延遲時間"</string>
     <!-- Sound & display settings screen, setting option name to change whether the screen adjusts automatically based on lighting conditions -->
@@ -1416,7 +1324,7 @@
     <!-- About phone, status item title.  How much time the device has had its main CPU awake. -->
     <string name="status_awake_time" msgid="2393949909051183652">"清醒時間"</string>
     <!-- SD card & phone storage settings screen heading. This is displayed above items that pertain to the phone's internal storage  -->
-    <string name="internal_memory" msgid="9129595691484260784">"內存空間"</string>
+    <string name="internal_memory" msgid="9129595691484260784">"內部儲存空間"</string>
     <!-- SD card & additional storage settings screen heading. This is displayed above items that pertain to the phone's additional storage  -->
     <string name="additional_memory">額外的儲存空間</string>
     <!-- SD card & phone storage settings screen heading. This is displayed above items that pertain to the SD card [CHAR LIMIT=30] -->
@@ -1533,6 +1441,8 @@
     <string name="apn_auth_type_pap_chap" msgid="9102343063036134541">"PAP 或 CHAP"</string>
     <!-- Edit access point labels: The type of APN -->
     <string name="apn_type" msgid="469613123902220544">"APN 類型"</string>
+    <!-- Edit access point labels: The protocol of the APN, e.g., "IPv4", "IPv6", or "IPv4/IPv6". -->
+    <string name="apn_protocol" msgid="3272222921649348640">"APN 通訊協定"</string>
     <!-- Edit access point screen menu option to delete this APN -->
     <string name="menu_delete" msgid="6981294422841124659">"刪除 APN"</string>
     <!-- APNs screen menu option to create a brand spanking new APN -->
@@ -1564,9 +1474,9 @@
     <!-- SD card & phone storage settings screen, setting option summary text under Internal phone storage heading -->
     <string name="master_clear_summary" msgid="4986154238001088492">"清除手機上所有資料"</string>
     <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset [CHAR LIMIT=NONE] -->
-    <string name="master_clear_desc" product="nosdcard" msgid="2163013814299528247">"這會清除您手機"<b>"內存空間"</b>"中的所有資料，包括："\n\n<li>"您的 Google 帳戶"</li>\n<li>"系統和應用程式資料及設定"</li>\n<li>"已下載的應用程式"</li>\n\n"如要清除手機上的所有資料，則需清除 "<b>"USB 儲存裝置"</b>"。"\n\n</string>
+    <string name="master_clear_desc" product="nosdcard" msgid="2163013814299528247">"這會清除您手機"<b>"內部儲存空間"</b>"中的所有資料，包括："\n\n<li>"您的 Google 帳戶"</li>\n<li>"系統和應用程式資料及設定"</li>\n<li>"已下載的應用程式"</li>\n\n"如要清除手機上的所有資料，則需清除 "<b>"USB 儲存裝置"</b>"。"\n\n</string>
     <!-- SD card & phone storage settings screen, message on screen after user selects Factory data reset -->
-    <string name="master_clear_desc" product="default" msgid="1741944496458365969">"這會清除您手機"<b>"內存空間"</b>"中的所有資料，包括："\n\n<li>"您的 Google 帳戶"</li>\n<li>"系統和應用程式資料及設定"</li>\n<li>"已下載的應用程式"</li>\n\n"如要一併清除音樂、相片及其他資料，則需清除 "<b>"SD 卡"</b>"。"\n\n</string>
+    <string name="master_clear_desc" product="default" msgid="1741944496458365969">"這會清除您手機"<b>"內部儲存空間"</b>"中的所有資料，包括："\n\n<li>"您的 Google 帳戶"</li>\n<li>"系統和應用程式資料及設定"</li>\n<li>"已下載的應用程式"</li>\n\n"如要一併清除音樂、相片及其他資料，則需清除 "<b>"SD 卡"</b>"。"\n\n</string>
     <!-- SD card & phone storage settings screen, label for check box to erase USB storage [CHAR LIMIT=30] -->
     <string name="erase_external_storage" product="nosdcard" msgid="969364037450286809">"清除 USB 儲存裝置"</string>
     <!-- SD card & phone storage settings screen, label for check box to erase SD card [CHAR LIMIT=30] -->
@@ -1820,7 +1730,7 @@
     <!-- Applications settings screen heading. The header for the Application settings screen. -->
     <string name="applications_settings_header" msgid="6018266337275422250">"應用程式設定"</string>
     <!-- Applications settings screen, setting check box title. If checked, the system allows installation of applications that are downloaded from random places, such as web sites.  -->
-    <string name="install_applications" msgid="4872012136210802181">"未知的來源"</string>
+    <string name="install_applications" msgid="4872012136210802181">"不明的來源"</string>
     <!-- Applications settings screen, setting check box summary.  This is the summary for "Unknown sources" checkbox  -->
     <string name="install_unknown_applications" msgid="6612824788917283662">"允許安裝非 Market 應用程式"</string>
     <!-- Applications settings screen, message text of alert that appears if user selects the "Unknown sources" check box -->
@@ -1901,7 +1811,7 @@
     <!-- [CHAR LIMIT=25] Text shown when there are no applications to display. -->
     <string name="no_applications" msgid="5190227407135243904">"沒有應用程式。"</string>
     <!-- [CHAR LIMIT=15] Manage applications, label for chart showing internal storage use. -->
-    <string name="internal_storage" msgid="1584700623164275282">"內存空間"</string>
+    <string name="internal_storage" msgid="1584700623164275282">"內部儲存空間"</string>
     <!-- [CHAR LIMIT=15] Manage applications, label for chart showing SD card storage use. -->
     <string name="sd_card_storage" product="nosdcard" msgid="2673203150465132465">"USB 儲存裝置"</string>
     <!-- [CHAR LIMIT=15] Manage applications, label for chart showing SD card storage use. -->
@@ -2444,7 +2354,7 @@
     <!-- Description for power consumed by display -->
     <string name="battery_desc_display" msgid="5432795282958076557">"顯示與背光啟動時的耗電量"</string>
     <!-- Suggestion for reducing display power -->
-    <string name="battery_sugg_display" msgid="3370202402045141760">"降低螢幕亮度和/或螢幕逾時時間"</string>
+    <string name="battery_sugg_display" msgid="3370202402045141760">"降低螢幕亮度和/或螢幕自動關閉時間"</string>
 
     <!-- Description for Wi-Fi connectivity -->
     <string name="battery_desc_wifi" msgid="1702486494565080431">"Wi-Fi 耗電量"</string>
@@ -2845,6 +2755,10 @@
     <string name="profile_appgroup_title">應用程式群組：%s</string>
     <!-- Title for application group list screen -->
     <string name="profile_appgroups_title">應用程式群組</string>
+    <!-- Title for application group list screen -->
+    <string name="profile_volumeoverrides_title">替換音量</string>
+    <!-- Title for application group list screen -->
+    <string name="profile_volumeoverrides_summary">輕觸以設定音量</string>
     <!-- Title for application group list section, hint at delete action -->
     <string name="profile_applist_title">應用程式－輕觸以移除自群組</string>
     <!-- Prompt for name when adding a new app group -->
@@ -2935,7 +2849,7 @@
     <string name="sound_category_sound_title" msgid="1488759370067953996">"一般"</string>
     <string name="sound_category_calls_title" msgid="3688531959256239012">"來電"</string>
     <string name="sound_category_notification_title" msgid="3502115998790286943">"通知"</string>
-    <string name="sound_category_feedback_title" msgid="4399742321363475393">"回饋"</string>
+    <string name="sound_category_feedback_title">回饋</string>
 
     <string name="launcher_settings_title">ADW 主介面</string>
 
@@ -3026,4 +2940,13 @@
     <string name="widget_count">（%d 個小工具）</string>
 
     <string name="cm_settings_title">CyanogenMod 設定</string>
+
+    <string name="wimax_settings" msgid="1574837328738396794">"4G 設定"</string>
+    <string name="wimax_settings_summary" msgid="3207355006084135453">"設定與管理 4G 網路及數據機"</string>
+    <string name="status_wimax_mac_address" msgid="8390791848661413416">"4G MAC 位址"</string>
+
+    <!-- A menu item in "About phone" that allows the user to update the phone with settings
+    from their cell phone carrier. The use of the string is similar to the string
+    "system_update_settings_list_item_title" in this project. [CHAR LIMIT=25] -->
+    <string name="additional_system_update_settings_list_item_title">額外的系統更新</string>
 </resources>

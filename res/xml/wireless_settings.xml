@@ -40,19 +40,13 @@
             android:targetClass="com.android.settings.wifi.WifiSettings" />
     </PreferenceScreen>
 
-    <CheckBoxPreference
-        android:key="toggle_wimax"
-        android:title="@string/wimax_quick_toggle_title"
-        android:summary="@string/wimax_quick_toggle_summary"
-	android:persistent="false" />
-
     <PreferenceScreen
         android:key="wimax_settings"
-        android:title="@string/wimax_settings_title"
-        android:summary="@string/wimax_settings_summary">
+        android:title="@string/wimax_settings"
+        android:summary="@string/wimax_settings_summary" >
         <intent
             android:action="android.intent.action.MAIN"
-            android:targetPackage="com.android.settings"
+            android:targetPackage="com.android.settings.wimax"
             android:targetClass="com.android.settings.wimax.WimaxSettings" />
     </PreferenceScreen>
 
