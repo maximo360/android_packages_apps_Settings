@@ -88,6 +88,10 @@
     <string name="battery_info_health_over_voltage" msgid="2420269351664490121">"Слишком высокое напряжение"</string>
     <string name="battery_info_health_unspecified_failure" msgid="6347021103185471590">"Неизвестная ошибка"</string>
     <string name="bluetooth" msgid="5549625000628014477">"Bluetooth"</string>
+    <!-- Bluetooth settings screen, list label how long the device remains in discoverable mode -->
+    <string name="bluetooth_discoverable_duration_title">Продолжительность видимости</string>
+    <!-- Bluetooth settings screen, Discoverable duration list summary -->
+    <string name="bluetooth_discoverable_duration_summary">Как долго устройство остаётся видимым</string>
     <string name="bluetooth_visibility" msgid="2930835434091839916">"Видимость"</string>
     <string name="bluetooth_is_discoverable" msgid="1205694503775884903">"Видимый в течение <xliff:g id="DISCOVERABLE_TIME_PERIOD">%1$s</xliff:g> секунд..."</string>
     <string name="bluetooth_not_discoverable" msgid="128269993123955177">"Сделать устройство видимым"</string>
@@ -446,6 +450,8 @@
     <string name="lock_sounds_enable_title" msgid="1575990840389107141">"Звук блокировки экрана"</string>
     <string name="lock_sounds_enable_summary_on" msgid="145741024028391473">"Воспроизводить звук при установке и снятии блокировки экрана"</string>
     <string name="lock_sounds_enable_summary_off" msgid="8481243116223542804">"Воспроизводить звук при установке и снятии блокировки экрана"</string>
+    <string name="power_sounds_enable_title">Звук низкого заряда батареи</string>
+    <string name="power_sounds_enable_summary">Проигрывать звук предупреждения о низком заряде батареи</string>
     <string name="haptic_feedback_enable_title" msgid="6311736559245411290">"Виброотклик"</string>
     <string name="haptic_feedback_enable_summary_on" msgid="1875779656524793053">"Вибрация при нажатии софт-клавиш и некоторых элементов интерфейса"</string>
     <string name="haptic_feedback_enable_summary_off" msgid="7287885436963105314">"Вибрация при нажатии софт-клавиш и некоторых элементов интерфейса"</string>
